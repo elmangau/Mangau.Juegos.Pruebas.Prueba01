@@ -63,5 +63,10 @@ public class Player : MonoBehaviour
         {
             _shooter.canShoot = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }

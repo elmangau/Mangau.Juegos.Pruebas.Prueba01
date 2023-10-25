@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy1 : MonoBehaviour
 {
     public float speed = 5f;
     public Vector2 min = new(-12f, -7f);
@@ -10,23 +10,13 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject gunPoint;
 
+    void Awake()
+    {
+        _shooter = gunPoint.GetComponent<Shooter>();
+        _shooter.canShoot = true;
+    }
+
     void Update()
-    {
-        GetShooter();
-
-        Move();
-    }
-
-    private void GetShooter()
-    {
-        if (_shooter == null && gunPoint != null)
-        {
-            _shooter = gunPoint.GetComponent<Shooter>();
-            _shooter.canShoot = true;
-        }
-    }
-
-    private void Move()
     {
         var temp = transform.position;
         temp.x -= speed * Time.deltaTime;
